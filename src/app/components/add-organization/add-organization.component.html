@@ -1,0 +1,48 @@
+<p>Add Organization here</p>
+
+<form class="user" [formGroup]="addOrgForm">
+    <div class="form-group">
+        <input type='text' placeholder="organizationName..." class="form-control form-control-user"
+            formControlName="organizationName" [ngClass]="{ 'is-invalid': submitted && f.organizationName.errors }">
+        <div *ngIf="(submitted || f.organizationName.touched) && f.organizationName.errors" class="focus-input100">
+            <div *ngIf="f.organizationName.errors.required" class="text-danger">organizationName is required</div>
+            <div *ngIf="f.organizationName.errors.maxlength" class="text-danger">Max 100 words</div>
+        </div>
+    </div>
+    <br>
+    <div class="form-group">
+        <input type='text' placeholder="organizationShortName..." class="form-control form-control-user"
+            formControlName="organizationShortName"
+            [ngClass]="{ 'is-invalid': submitted && f.organizationShortName.errors }">
+        <div *ngIf="(submitted || f.organizationShortName.touched) && f.organizationShortName.errors"
+            class="focus-input100">
+            <div *ngIf="f.organizationShortName.errors.required" class="text-danger">organizationShortName is required
+            </div>
+            <div *ngIf="f.organizationShortName.errors.maxlength" class="text-danger">Max 50 words</div>
+        </div>
+    </div>
+    <br>
+    <div class="form-group">
+        <input type='text' placeholder="organizationURL..." class="form-control form-control-user"
+            formControlName="organizationURL" [ngClass]="{ 'is-invalid': submitted && f.organizationURL.errors }">
+        <div *ngIf="(submitted || f.organizationURL.touched) && f.organizationURL.errors" class="focus-input100">
+            <div *ngIf="f.organizationURL.errors.required" class="text-danger">organizationURL is required</div>
+            <div *ngIf="f.organizationURL.errors.pattern">Please enter valid url.</div>
+        </div>
+    </div>
+    <br>
+    <div class="form-group">
+        <input type='text' placeholder="organizationLOGO..." class="form-control form-control-user"
+            formControlName="organizationLOGO" [ngClass]="{ 'is-invalid': submitted && f.organizationLOGO.errors }">
+        <div *ngIf="(submitted || f.organizationLOGO.touched) && f.organizationLOGO.errors" class="focus-input100">
+            <div *ngIf="f.organizationLOGO.errors.required" class="text-danger">organizationLOGO is required</div>
+        </div>
+    </div>
+    <br>
+
+
+    <button type="submit" [disabled]="!addOrgForm.valid" [ngClass]="{'disable':!addOrgForm.valid}" (click)="onSubmit()"
+        class="btn btn-primary btn-user btn-block">
+        <span> Add organization </span>
+    </button>
+</form>
