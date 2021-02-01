@@ -1,12 +1,22 @@
-<p>All Organizations </p>
-<button (click)="navigateToAddOrg()">Add organization</button> &nbsp;
+<div class="org">
+    <h3>All Organizations </h3>
+    <button (click)="navigateToAddOrg()">Add organization</button> &nbsp;
 
-<button (click)="logOut()">Log Out</button>
-
-<ul class="heroes" *ngFor="let org of organizationListing">
-    <li>
-        <span class="badge">organizationName : {{org.organizationName}}</span> organizationShortName:
-        {{org.organizationShortName}}
-        <span class="badge">organizationURL : {{org.organizationURL}}</span> LOGO: {{org.organizationLOGO}}
-    </li>
-</ul>
+    <button (click)="logOut()">Log Out</button>
+    <br>
+    <br>
+    <table style="width:100%">
+        <tr>
+            <th>organizationName</th>
+            <th>organizationShortName</th>
+            <th>organizationURL</th>
+            <th>organizationLogo</th>
+        </tr>
+        <tr *ngFor="let org of organizationListing">
+            <td>{{org.organizationName}}</td>
+            <td>{{org.organizationShortName}}</td>
+            <td> {{org.organizationURL}}</td>
+            <td>{{org.organizationLOGO}}</td>
+        </tr>
+    </table>
+</div>

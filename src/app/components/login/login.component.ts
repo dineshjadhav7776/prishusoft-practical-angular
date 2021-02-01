@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
+  isLoading: boolean = false;
 
   submitted = false;
   // errorMessage: string;
@@ -29,21 +30,26 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
+    this.isLoading = true;
     // stop here if form is invalid
     if (this.loginForm.invalid) {
       this.submitted = false;
+      this.isLoading = false;
       return;
     }
     else {
       this.authService.login(this.loginForm.value).subscribe((data: any) => {
+        this.isLoading = false;
         if (data.success == true) {
           alert('Login success');
           localStorage.setItem('adminToken', data.auth_token);
           this.router.navigate(['/all-organizations']);
+
         } else {
           alert('email or password does not match, Please try again');
         }
       }, (error: HttpErrorResponse) => {
+        this.isLoading = false;
         this.submitted = false;
         alert('email or password does not match, Please try again');
         if (error.status === 0) {

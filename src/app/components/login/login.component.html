@@ -1,24 +1,27 @@
-<form class="user" [formGroup]="loginForm">
-    <div class="form-group">
-        <input type="email" placeholder="Enter Email Address..." class="form-control form-control-user"
-            formControlName="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
-        <div *ngIf="(submitted || f.email.touched) && f.email.errors" class="focus-input100">
-            <div *ngIf="f.email.errors.required" class="text-danger">Email is required</div>
-            <div *ngIf="f.email.errors.email" class="text-danger">Email not valid</div>
+<div class="center">
+    <h3 *ngIf="isLoading">Loading....</h3>
+    <form class="user" [formGroup]="loginForm" *ngIf="!isLoading">
+        <div class="form-group">
+            <input type="email" placeholder="Enter Email Address..." class="form-control form-control-user"
+                formControlName="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+            <div *ngIf="(submitted || f.email.touched) && f.email.errors" class="focus-input100">
+                <div *ngIf="f.email.errors.required" class="text-danger">Email is required</div>
+                <div *ngIf="f.email.errors.email" class="text-danger">Email not valid</div>
+            </div>
         </div>
-    </div>
-    <br>
-    <div class="form-group">
-        <input type="password" placeholder="Password" class="form-control form-control-user" formControlName="password"
-            [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
-        <div *ngIf="(submitted || f.password.touched) && f.password.errors" class="focus-input100">
-            <div *ngIf="f.password.errors.required" class="text-danger">Password is required</div>
+        <br>
+        <div class="form-group">
+            <input type="password" placeholder="Password" class="form-control form-control-user"
+                formControlName="password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
+            <div *ngIf="(submitted || f.password.touched) && f.password.errors" class="focus-input100">
+                <div *ngIf="f.password.errors.required" class="text-danger">Password is required</div>
+            </div>
         </div>
-    </div>
-    <br>
-    <button type="submit" [disabled]="!loginForm.valid" [ngClass]="{'disable':!loginForm.valid}" (click)="onSubmit()"
-        class="btn btn-primary btn-user btn-block">
-        <span> Login </span>
-    </button>
+        <br>
+        <button type="submit" [disabled]="!loginForm.valid" [ngClass]="{'disable':!loginForm.valid}"
+            (click)="onSubmit()" class="btn btn-primary btn-user btn-block">
+            <span> Login </span>
+        </button>
 
-</form>
+    </form>
+</div>

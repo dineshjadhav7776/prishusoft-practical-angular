@@ -41,9 +41,6 @@ export class AddOrganizationComponent implements OnInit {
       }, (error: HttpErrorResponse) => {
         this.submitted = false;
         alert('failed to add !');
-        if (error.status === 0) {
-          this.submitted = false;
-        }
       });
     }
   }
